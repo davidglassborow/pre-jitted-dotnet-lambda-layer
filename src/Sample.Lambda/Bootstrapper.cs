@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Sample.Lambda.Interfaces;
 
 namespace Sample.Lambda
@@ -8,8 +7,6 @@ namespace Sample.Lambda
     {
         public static ServiceProvider Boostrap(this IServiceCollection services)
         {
-            services.AddLogging();
-            services.AddSingleton(s => s.GetRequiredService<ILoggerFactory>().CreateLogger(""));
             services.AddSingleton<IHandler, Handler>();
             
             return services.BuildServiceProvider();
