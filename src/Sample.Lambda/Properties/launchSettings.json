@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Mock Lambda Test Tool": {
+      "commandName": "Executable",
+      "commandLineArgs": "--port 5050",
+      "executablePath": "/home/bruno/.dotnet/tools/.store/amazon.lambda.testtool-3.1/0.11.3/amazon.lambda.testtool-3.1/0.11.3/tools/netcoreapp3.1/any/Amazon.Lambda.TestTool.BlazorTester.dll",
+      "environmentVariables": {
+        "Application__Version": "1.0.0",
+        "LAMBDA_NET_SERIALIZER_DEBUG": "true"
+      }
+    }
+  }
+}
