@@ -1,4 +1,4 @@
-# pre-jitting in .NET Lambda
+# pre-jitting a .NET Lambda
 
 Pre-compiling some of our assemblies and wrapping it in a Lambda layer. This is a demo repository for one of my articles: https://www.bschaatsbergen.com/pre-jitted-dotnet-lambda
 
