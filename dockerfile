@@ -18,5 +18,5 @@ RUN git clone https://github.com/bschaatsbergen/pre-jitted-dotnet-lambda-layer.g
 # The 'Dependencies.csproj' is stored under the '/Dependencies' directory
 WORKDIR /pre-jitted-dotnet-lambda-layer/Dependencies
 
-# '~/.dotnet/tools/dotnet-lambda' 
+# '~/.dotnet/tools/dotnet-lambda is the alias we use' 
 RUN ~/.dotnet/tools/dotnet-lambda publish-layer Dependencies --layer-type runtime-package-store --framework netcoreapp3.1 --s3-bucket bruno-lambda-layer-demo --enable-package-optimization true --region eu-central-1
