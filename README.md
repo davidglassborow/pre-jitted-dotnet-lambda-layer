@@ -4,10 +4,10 @@ Pre-compiling some of our assemblies and wrapping it in a Lambda layer. This is 
 
 ## Publish the layer
 
-Navigate to the /Dependencies directory
+Create an S3 bucket and navigate to the /Dependencies directory. Run the following command from an Amazon Linux machine. (see docker section otherwise).
 
 ```bash
-dotnet lambda publish-layer Dependencies --layer-type runtime-package-store --s3-bucket my-lambda-layer-bucket --framework netcoreapp3.1 --enable-package-optimization true
+❯ dotnet lambda publish-layer Dependencies --layer-type runtime-package-store --s3-bucket my-lambda-layer-bucket --framework netcoreapp3.1 --enable-package-optimization true
 ```
 
 # What are we trying to solve?
@@ -27,7 +27,7 @@ Cold starts, here an example of a cold start from a Lambda function that does no
 Deploy the function by referencing the publisher lambda layer ARN from the output of the 'dotnet lambda publish-layer' command.
 
 ```bash
-dotnet lambda deploy-function SampleLambda --function-layers arn:aws:lambda:eu-central-1:782347423781:layer:Dependencies:1 
+❯ dotnet lambda deploy-function SampleLambda --function-layers arn:aws:lambda:eu-central-1:782347423781:layer:Dependencies:1 
 ```
 
 Below the logs from the same Lambda function using the pre-jitted Lambda layer.
@@ -38,6 +38,14 @@ Below the logs from the same Lambda function using the pre-jitted Lambda layer.
 2021-07-30T22:54:39.848+02:00	Handler.Handle() => Reached handler.
 2021-07-30T22:54:39.849+02:00	END RequestId: c1d5ba5e-7779-407d-a92e-c33c4fcea096
 2021-07-30T22:54:39.849+02:00	REPORT RequestId: c1d5ba5e-7779-407d-a92e-c33c4fcea096 Duration: 613.28 ms Billed Duration: 614 ms Memory Size: 256 MB Max Memory Used: 73 MB Init Duration: 218.69 ms
+```
+
+## Docker
+
+You can use the dockerfile in order to generate the pre-jitted runtime package store and upload it to S3.
+
+```bash
+❯ docker build . --build-arg access_key=AKIAIOSFODNN7EXAMPLE --build-arg secret_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
 ## Questions
