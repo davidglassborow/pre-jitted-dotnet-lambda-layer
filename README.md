@@ -10,7 +10,7 @@ Create an S3 bucket and navigate to the /Dependencies directory. Run the followi
 ❯ dotnet lambda publish-layer Dependencies --layer-type runtime-package-store --s3-bucket my-lambda-layer-bucket --framework netcoreapp3.1 --enable-package-optimization true
 ```
 
-# What are we trying to solve?
+## What are we trying to solve?
 
 Cold starts, here an example of a cold start from a Lambda function that does not use pre-jitted .NET assemblies.
 
